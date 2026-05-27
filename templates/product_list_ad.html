@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление ценами BTB</title>
+    <link rel="stylesheet" href="/static/product_list_ad.css">
+</head>
+<body>
+    <header>
+        <h1>OMB Admin</h1>
+        <nav>
+            <ul>
+                <li><a href="/about" class="active">О нас</a></li>
+                <li><a href="/btc">Продажа (BTC)</a></li>
+                <li><a href="/btb">Продажа (BTB)</a></li>
+                <li><a href="/cart">Корзина (<span id="cart-count">0</span>)</a></li>
+                <li><a href="/account">Личный кабинет</a></li>
+                <li><a href="/admin/products">Управление ценами</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Управление ценами BTB</h2>
+        <div class="admin-products">
+            {% for product in products %}
+            <div class="admin-product">
+                <h3>{{ product.name }}</h3>
+                <p>Ozon цена: {{ product.price }} RUB</p>
+
+                <!-- product_list_ad.html -->
+                <div class="price-control">
+                    <input type="number"
+                           value="{{ product.btb_price or '' }}"
+                           placeholder="BTB цена"
+                           id="btb-price-{{ product.product_id }}">
+
+                    <button onclick="updateBtbPrice({{ product.product_id }})">
+                        Обновить
+                    </button>
+
+                    {% if product.btb_price %}
+                    <button onclick="resetBtbPrice({{ product.product_id }})">
+                        Сбросить
+                    </button>
+                    {% endif %}
+                </div>
+
+                <script>
+                async function updateBtbPrice(productId) {
+                    const price = document.getElementById(`btb-price-${productId}`).value;
+                    await fetch('/api/btb_price/update', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ product_id: productId, price: price })
+                    });
+                    location.reload();
+                }
+
+                async function resetBtbPrice(productId) {
+                    await fetch(`/api/btb_price/delete/${productId}`, { method: 'DELETE' });
+                    location.reload();
+                }
+                </script>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script>
+        async function updatePrice(productId) {
+            const priceInput = document.getElementById(`price-${productId}`);
+            const price = parseFloat(priceInput.value);
+
+            if (isNaN(price) || price <= 0) {
+                alert('Введите корректную цену');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/btb_price/update', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        price: price
+                    })
+                });
+
+                const result = await response.json();
+                if (result.status === 'success') {
+                    alert('Цена успешно обновлена!');
+                    location.reload();
+                } else {
+                    alert('Ошибка: ' + (result.message || 'Неизвестная ошибка'));
+                }
+            } catch (error) {
+                alert('Ошибка сети: ' + error.message);
+            }
+        }
+
+        async function resetPrice(productId) {
+            if (!confirm('Вернуть стандартную цену Ozon?')) return;
+
+            try {
+                const response = await fetch('/api/btb_price/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        product_id: productId
+                    })
+                });
+
+                const result = await response.json();
+                if (result.status === 'success') {
+                    alert('Цена восстановлена!');
+                    location.reload();
+                } else {
+                    alert('Ошибка: ' + (result.message || 'Неизвестная ошибка'));
+                }
+            } catch (error) {
+                alert('Ошибка сети: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

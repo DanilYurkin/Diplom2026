@@ -1,0 +1,129 @@
+/* Общие стили для body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Хедер */
+header {
+  background-color: #444444;
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Навигация */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  gap: 18px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #666666;
+}
+
+nav ul li a.active {
+  background-color: #222222;
+  pointer-events: none;
+}
+
+/* Основной контент */
+main {
+  flex-grow: 1;
+  max-width: 480px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Заголовки */
+main h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Параграфы с данными пользователя */
+main p {
+  font-size: 16px;
+  color: #444;
+  margin: 8px 0;
+  text-align: left;
+}
+
+/* Кнопки */
+.btn-buy, .btn-close, main button {
+  display: inline-block;
+  background-color: #444444;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin: 12px 8px 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  user-select: none;
+  min-width: 140px;
+  box-sizing: border-box;
+}
+
+.btn-buy:hover, .btn-close:hover, main button:hover {
+  background-color: #222222;
+}
+
+/* Отдельный стиль для кнопки Выйти */
+.btn-close {
+  background-color: #c0392b;
+  margin-left: 0;
+}
+
+.btn-close:hover {
+  background-color: #922b21;
+}
+
+/* Для кнопок Войти и Регистрация, если отображаются без классов */
+main button {
+  min-width: 120px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 520px) {
+  main {
+    margin: 20px 15px;
+    padding: 25px 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

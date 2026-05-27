@@ -1,0 +1,345 @@
+/* Сброс некоторых стилей */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6f7;
+  color: #3a3f4b;
+  line-height: 1.6;
+}
+
+/* Хедер и меню */
+
+.site-header {
+  background-color: #4a4f57;
+  color: #e0e0e0;
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(74, 79, 87, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  text-decoration: none;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.logo a:hover {
+  color: #aeb3bb;
+}
+
+/* Навигация */
+.main-nav ul.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav ul.nav-list li a {
+  color: #c1c4ca;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.main-nav ul.nav-list li a:hover,
+.main-nav ul.nav-list li a.active {
+  background-color: #6c7381;
+  color: white;
+}
+
+/* Основной контент */
+
+main {
+  max-width: 900px;
+  margin: 40px auto 80px auto;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(74, 79, 87, 0.1);
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #4a4f57;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Блок about-content и секции */
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(74, 79, 87, 0.1);
+  border: 1px solid #c1c4ca;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h3 {
+  font-size: 1.5rem;
+  color: #4a4f57;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #5a5f6a;
+  line-height: 1.5;
+}
+
+/* Преимущества */
+
+.advantages {
+  background-color: #f0f2f5;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(74, 79, 87, 0.05);
+}
+
+.advantages h3 {
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  color: #4a4f57;
+}
+
+.advantages p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  color: #6b6f7b;
+  font-size: 1rem;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+}
+
+.advantage-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(74, 79, 87, 0.1);
+  text-align: center;
+  color: #4a4f57;
+}
+
+.advantage-card h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.advantage-card p {
+  font-size: 0.9rem;
+  color: #6b6f7b;
+}
+
+/* Миссия и статистика */
+
+.mission {
+  margin-top: 50px;
+  text-align: center;
+  color: #4a4f57;
+}
+
+.mission h3 {
+  font-size: 1.7rem;
+  margin-bottom: 15px;
+}
+
+.mission p {
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  font-size: 1.1rem;
+  color: #5a5f6a;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background-color: #f0f2f5;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(74, 79, 87, 0.05);
+  width: 150px;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #4a4f57;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #6b6f7b;
+}
+
+/* CTA (призыв к действию) */
+
+.cta-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.cta-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: #4a4f57;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #5a5f6a;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  background-color: #6c7381;
+  color: white;
+  padding: 14px 32px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #4a4f57;
+}
+
+.cta-button.secondary {
+  background-color: #aeb3bb;
+  color: #4a4f57;
+}
+
+.cta-button.secondary:hover {
+  background-color: #8c919a;
+}
+
+/* Футер */
+
+footer {
+  background-color: #4a4f57;
+  color: #c1c4ca;
+  padding: 25px 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto 10px auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-section h4 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+}
+
+.footer-section p {
+  font-size: 1rem;
+  color: #d1d3d8;
+  line-height: 1.4;
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aeb3bb;
+}
+
+/* Картинка в about1.jpg и about2.jpg должна лежать в /static/ */
+
+/* Для адаптивности */
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .about-section.reverse {
+    flex-direction: column !important;
+  }
+
+  .about-image img {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .header-wrap {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-nav ul.nav-list {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}

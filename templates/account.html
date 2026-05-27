@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="/static/account.css">
+</head>
+<body>
+<header>
+    <h1>OMB</h1>
+    <nav>
+        <ul>
+            <li><a href="/about">О нас</a></li>
+            <li><a href="/btc">Продажа (BTC)</a></li>
+            <li><a href="/btb">Продажа (BTB)</a></li>
+            <li><a href="/cart">Корзина</a></li>
+            <li><a href="/account" class="active">Личный кабинет</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% if logged_in %}
+        <h2>Добро пожаловать, {{ user[3] }}!</h2>
+        <p><strong>ФИО:</strong> {{ user[0] }}</p>
+        <p><strong>Телефон:</strong> {{ user[1] }}</p>
+        <p><strong>Адрес:</strong> {{ user[2] }}</p>
+        <p><strong>Логин:</strong> {{ user[3] }}</p>
+
+        {% if session.get('is_admin') %}
+            <a href="/admin/products" class="btn-buy">Управление ценами BTB</a>
+            <a href="/register-admin" class="btn-buy">Зарегистрировать администратора</a>
+        {% endif %}
+
+        <a href="/edit-profile" class="btn-buy">Изменить данные</a>
+        <a href="/logout" class="btn-close">Выйти</a>
+    {% else %}
+        <h2>Личный кабинет</h2>
+        <button onclick="window.location.href='/login'">Войти</button>
+        <button onclick="window.location.href='/register'">Регистрация</button>
+    {% endif %}
+
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

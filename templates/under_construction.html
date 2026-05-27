@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>OMB</h1>
+        <nav>
+            <ul>
+                <li><a href="/about">О нас</a></li>
+                <li><a href="/btc">Продажа (BTC)</a></li>
+                <li><a href="/btb">Продажа (BTB)</a></li>
+                <li><a href="/cart">Корзина (<span id="cart-count">0</span>)</a></li>
+                <li><a href="/account">Личный кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>{{ title }}</h2>
+        <div class="construction-message">
+            <p>Этот раздел ещё в разработке</p>
+        </div>
+    </main>
+    <script src="/static/script.js"></script>
+</body>
+</html>

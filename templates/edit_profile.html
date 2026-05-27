@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить профиль</title>
+    <link rel="stylesheet" href="/static/edit_profile.css">
+</head>
+<body>
+<header>
+    <h1>OMB</h1>
+    <nav>
+        <ul>
+            <li><a href="/about" class="active">О нас</a></li>
+            <li><a href="/btc">Продажа (BTC)</a></li>
+            <li><a href="/btb">Продажа (BTB)</a></li>
+            <li><a href="/cart">Корзина (<span id="cart-count">0</span>)</a></li>
+            <li><a href="/account">Личный кабинет</a></li>
+            <li><a href="/account">Личный кабинет</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Редактирование профиля</h2>
+    <form method="POST" class="registration-form">
+        <label>ФИО:<br><input type="text" name="full_name" value="{{ user[0] }}" required></label><br><br>
+        <label>Телефон:<br><input type="number" name="phone" value="{{ user[1] }}" required></label><br><br>
+        <label>Адрес:<br><input type="text" name="address" value="{{ user[2] }}" required></label><br><br>
+        <button type="submit" class="btn-buy">Сохранить</button>
+        <a href="/account" class="btn-close">Отмена</a>
+    </form>
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ #{{ order_id }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Заказ #{{ order_id }}</h1>
+        <p>Статус: {{ payment_status }}</p>
+        <p>Дата: {{ created_at }}</p>
+    </header>
+
+    <main>
+        <section class="order-items">
+            <h2>Состав заказа:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Цена</th>
+                        <th>Кол-во</th>
+                        <th>Сумма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order_data.items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }} ₽</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.sum }} ₽</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Итого:</strong></td>
+                        <td><strong>{{ order_data.total }} ₽</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        {% if qr_url %}
+        <section class="qr-payment">
+            <h2>Оплата по QR-коду</h2>
+            <div class="qr-container">
+                <img src="{{ qr_url }}" alt="QR-код для оплаты" id="qr-image">
+                <p class="qr-instruction">Отсканируйте код через мобильное приложение банка</p>
+            </div>
+        </section>
+        {% else %}
+        <p class="no-qr">QR-код для оплаты еще не сгенерирован</p>
+        {% endif %}
+    </main>
+
+    <script>
+        // Проверка загрузки QR-кода
+        document.addEventListener('DOMContentLoaded', () => {
+            const qrImage = document.getElementById('qr-image');
+            if (qrImage) {
+                qrImage.onerror = function() {
+                    this.src = '/static/no_qr.png';
+                    document.querySelector('.qr-instruction').textContent =
+                        'Не удалось загрузить QR-код. Пожалуйста, обновите страницу.';
+                };
+            }
+        });
+    </script>
+</body>
+</html>
