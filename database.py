@@ -97,23 +97,23 @@ def init_db():
 
 
                 # Добавляем администратора, если его ещё нет
-        cursor.execute("SELECT COUNT(*) FROM users WHERE is_admin = 1")
-        if cursor.fetchone()[0] == 0:
-            cursor.execute('''
-                INSERT INTO users (full_name, phone, address, username, password, is_admin)
-                VALUES (?, ?, ?, ?, ?, ?)
-            ''', (
-                'Администратор',           # full_name
-                '+79991234567',            # phone
-                'г. Москва, ул. Примерная, д. 1',  # address
-                'admin',                   # username
-                'admin123',                # password (в реальном проекте пароль нужно хешировать!)
-                1                          # is_admin
-            ))
-            conn.commit()
-            print("✅ Добавлен администратор по умолчанию (логин: admin, пароль: admin123)")
-        else:
-            print("ℹ️ Администратор уже существует, пропускаем добавление")
+        # cursor.execute("SELECT COUNT(*) FROM users WHERE is_admin = 1")
+        # if cursor.fetchone()[0] == 0:
+        #     cursor.execute('''
+        #         INSERT INTO users (full_name, phone, address, username, password, is_admin)
+        #         VALUES (?, ?, ?, ?, ?, ?)
+        #     ''', (
+        #         'Администратор',           # full_name
+        #         '+79991234567',            # phone
+        #         'г. Москва, ул. Примерная, д. 1',  # address
+        #         'admin',                   # username
+        #         'admin123',                # password (в реальном проекте пароль нужно хешировать!)
+        #         1                          # is_admin
+        #     ))
+        #     conn.commit()
+        #     print("✅ Добавлен администратор по умолчанию (логин: admin, пароль: admin123)")
+        # else:
+        #     print("ℹ️ Администратор уже существует, пропускаем добавление")
 
         conn.commit()
         print("✅ База данных инициализирована")
